@@ -16,5 +16,5 @@ export const env = {
   JWT_ACCESS_EXPIRES: process.env.JWT_ACCESS_EXPIRES ?? '15m',
   JWT_REFRESH_EXPIRES: process.env.JWT_REFRESH_EXPIRES ?? '7d',
   REDIS_URL: process.env.REDIS_URL ?? 'redis://localhost:6379',
-  CLIENT_URL: process.env.CLIENT_URL ?? 'http://localhost:5173',
+  CLIENT_URL: (process.env.CLIENT_URL ?? 'http://localhost:5173').replace(/\/$/, ''),
 }
