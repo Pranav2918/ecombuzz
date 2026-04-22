@@ -15,15 +15,11 @@ export const productsApi = {
     apiClient.get<ApiResponse<Product>>(`/products/id/${id}`),
 
   // Admin
-  create: (data: FormData) =>
-    apiClient.post<ApiResponse<Product>>('/products', data, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
+  create: (data: Record<string, unknown>) =>
+    apiClient.post<ApiResponse<Product>>('/products', data),
 
-  update: (id: string, data: FormData) =>
-    apiClient.put<ApiResponse<Product>>(`/products/${id}`, data, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-    }),
+  update: (id: string, data: Record<string, unknown>) =>
+    apiClient.put<ApiResponse<Product>>(`/products/${id}`, data),
 
   delete: (id: string) =>
     apiClient.delete<ApiResponse<null>>(`/products/${id}`),

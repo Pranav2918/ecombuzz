@@ -55,15 +55,12 @@ export default function AdminProducts() {
         images: form.images.split(',').map((s) => s.trim()).filter(Boolean),
         tags: form.tags.split(',').map((s) => s.trim()).filter(Boolean),
       }
-      const fd = new FormData()
-      Object.entries(payload).forEach(([k, v]) =>
-        fd.append(k, Array.isArray(v) ? JSON.stringify(v) : String(v)))
 
       if (editingId) {
-        await productsApi.update(editingId, fd)
+        await productsApi.update(editingId, payload)
         toast.success('Product updated')
       } else {
-        await productsApi.create(fd)
+        await productsApi.create(payload)
         toast.success('Product created')
       }
       setShowForm(false)
